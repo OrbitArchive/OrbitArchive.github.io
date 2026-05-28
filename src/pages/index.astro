@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
+
+import RecentRepositories from '../components/RecentRepositories.astro';
 ---
 
 <Layout>
@@ -11,6 +13,14 @@ import Layout from '../layouts/Layout.astro';
 		<h1 class="py-1 relative">
 			Welcome to OrbitArchive. We reserve your favourite old-school projects and make their old services come alive again.<br>
 			How we want to plan this out, is all the original repositories will be on our private Forgejo instance with its original commits and releases<br>
+			<br>
+			We are currently a one man team at the moment, and can only archive one repository at a time. If you would like to support our work. Join our Discord below
 		</h1>
+	</div>
+	
+	<h1 class="font-semibold py-3 text-3xl">Recent Repositories</h1>
+	<div class="px-6 py-3">
+		<h1>This will show the last three repositories, that we archived. Click here to view all our  <a class="text-blue-300 hover:text-blue-600 transition" href="/repositories">repositories</a> we've archived so far!</h1>
+		<RecentRepositories/>
 	</div>
 </Layout>

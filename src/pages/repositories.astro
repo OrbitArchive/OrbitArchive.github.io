@@ -1,0 +1,39 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+
+import ArchiveCard from '../components/ArchiveCard.astro';
+
+const archivedProjects = [
+    {
+        title: "Oldcord",
+        description: "An open-source reimplementation of the old (2015-2018) Discord backend, including an on-demand client patcher.",
+        originalLanguage: "JavaScript",
+        commitHash: "N/A",
+        releaseVersion: "N/A",
+        forgejoUrl: "https://archival.orbitarchive.top/oldcordapp/Oldcord",
+        liveDemoUrl: "https://oldcord.orbitarchive.top",
+        status: "archiving",
+        stars: 0
+    }
+];
+---
+
+<Layout>
+	<Header/>
+	
+	<h1 class="font-semibold py-3 text-3xl">Repositories</h1>
+	<div class="px-6 py-3">
+		<h1 class="py-1 relative">
+            Here is all the repositories and projects that we have archived or in the middle of archiving.<br>
+            All the cards below, will have the same repository name and description if found. But if they aren't found.<br>
+            I'll make them up to match that certain repository.
+		</h1>
+        <br>
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {archivedProjects.map((repo) => (
+                <ArchiveCard {...repo} />
+            ))}
+        </section>
+	</div>
+</Layout>
