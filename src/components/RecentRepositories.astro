@@ -1,25 +1,35 @@
 ---
 import ArchiveCard from './ArchiveCard.astro';
 
-const archivedProjects = [
-    {
-        title: "Oldcord",
-        description: "An open-source reimplementation of the old (2015-2018) Discord backend, including an on-demand client patcher.",
-        originalLanguage: "JavaScript",
-        commitHash: "N/A",
-        releaseVersion: "N/A",
-        forgejoUrl: "https://archival.orbitarchive.top/oldcordapp/Oldcord",
-        liveDemoUrl: "https://oldcord.orbitarchive.top",
-        status: "archiving",
-        stars: 0
-    }
-];
+import archivedProjects from '../../public/repositories.json';
+
+// const archivedProjects = [
+//     {
+//         title: "Oldcord",
+//         description: "An open-source reimplementation of the old (2015-2018) Discord backend, including an on-demand client patcher.",
+//         originalLanguage: "JavaScript",
+//         commitHash: "N/A",
+//         releaseVersion: "N/A",
+//         forgejoUrl: "https://archival.orbitarchive.top/oldcordapp/Oldcord",
+//         liveDemoUrl: "https://oldcord.orbitarchive.top",
+//         status: "archiving",
+//         stars: 0
+//     }
+// ];
 ---
 
 <div class="px-6 py-3">
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {archivedProjects.map((repo) => (
-            <ArchiveCard {...repo} />
-        ))}
+            {archivedProjects.map((repo) => (
+                <ArchiveCard 
+                title={repo.title}
+                description={repo.description}
+                originalLanguage={repo.originalLanguage}
+                commitHash={repo.commitHash}
+                releaseVersion={repo.releaseVersion}
+                forgejoUrl={repo.forgejoUrl}
+                liveDemoUrl={repo.liveDemoUrl || undefined}  status={repo.status as 'archiving' | 'revived' | 'archived'} stars={repo.stars}
+                />
+            ))}
     </section>
 </div>
