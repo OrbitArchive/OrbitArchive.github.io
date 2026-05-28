@@ -1,26 +1,109 @@
 ---
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
-
 import RecentRepositories from '../components/RecentRepositories.astro';
 ---
 
-<Layout>
-	<Header/>
-	
-	<h1 class="font-semibold py-3 text-3xl">OrbitArchive</h1>
-	<div class="px-6 py-3">
-		<h1 class="py-1 relative">
-			Welcome to OrbitArchive. We reserve your favourite old-school projects and make their old services come alive again.<br>
-			How we want to plan this out, is all the original repositories will be on our private Forgejo instance with its original commits and releases<br>
-			<br>
-			We are currently a one man team at the moment, and can only archive one repository at a time. If you would like to support our work. Join our Discord below
-		</h1>
-	</div>
-	
-	<h1 class="font-semibold py-3 text-3xl">Recent Repositories</h1>
-	<div class="px-6 py-3">
-		<h1>This will show the last three repositories, that we archived. Click here to view all our  <a class="text-blue-300 hover:text-blue-600 transition" href="/repositories">repositories</a> we've archived so far!</h1>
-		<RecentRepositories/>
-	</div>
+<Layout title="OrbitArchive - Preserving Digital History">
+  <div class="bg-[#0d1117] text-[#c9d1d9] min-h-screen font-sans antialiased selection:bg-blue-500/30 selection:text-blue-200">
+    
+    <Header/>
+
+    <main class="max-w-4xl mx-auto px-4 py-12 md:py-16 space-y-16">
+      
+      <section class="relative bg-[#161b22] border border-[#30363d] rounded-xl p-6 md:p-8 shadow-2xl overflow-hidden group">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-500"></div>
+        
+        <div class="flex items-center gap-3 mb-6">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+          </div>
+          <span class="text-xs font-mono text-slate-500 select-none">orbit-archive // initialization</span>
+        </div>
+
+        <h1 class="font-extrabold text-3xl md:text-4xl tracking-tight text-white mb-4 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          OrbitArchive
+        </h1>
+
+        <div class="space-y-4 text-base md:text-lg leading-relaxed text-slate-300">
+          <p>
+            Welcome to <span class="text-blue-400 font-medium">OrbitArchive</span>. We reserve your favorite old-school projects and bring their legacy services back to life.
+          </p>
+          <p class="text-sm md:text-base text-slate-400">
+            Every project we preserve is securely mirrored onto our private <span class="font-mono text-slate-200 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">Forgejo</span> instance, capturing its exact ancestral git history, original tags, commits, and stable releases.
+          </p>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 bg-[#161b22] border border-[#30363d] rounded-xl p-5 flex flex-col justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              <h3 class="text-sm font-mono tracking-wider uppercase font-bold text-amber-400">Pipeline Constraints</h3>
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              We are currently operating as a <span class="text-slate-200 font-medium">one-man team</span>. To ensure maximum fidelity, container isolation, and architectural accuracy, we archive exactly <span class="text-white border-b border-dotted border-slate-400">one repository at a time</span>.
+            </p>
+          </div>
+          <div class="text-xs font-mono text-slate-500">
+            Queue capacity: 1 Active / 0 Staged
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-[#1d2433] to-[#161b22] border border-blue-500/20 rounded-xl p-5 flex flex-col justify-between gap-6 shadow-lg shadow-blue-950/20">
+          <div>
+            <h3 class="text-sm font-bold tracking-wider uppercase text-blue-400 mb-2">Support Our Mission</h3>
+            <p class="text-xs text-slate-400 leading-normal">
+              Want to see a specific service resurrected or help out with infrastructure support? Come talk and hang out.
+            </p>
+			<p class="text-xs text-slate-400 leading-normal">
+              Discord Server not ready yet!
+            </p>
+          </div>
+          
+          <a
+		  	style="pointer-events: none;"
+            href="https://discord.gg/your-invite-link" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-full text-center inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#5865F2] hover:bg-[#4752C4] text-white text-sm font-medium rounded-lg transition-colors font-sans shadow-sm"
+          >
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 127.14 96.36">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a74.37,74.37,0,0,0,6.72-10.93,68.6,68.6,0,0,1-10.64-5.12c.91-.67,1.81-1.37,2.67-2.1a75.22,75.22,0,0,0,72.77,0c.86.73,1.76,1.43,2.67,2.1a68.86,68.86,0,0,1-10.64,5.12,74.74,74.74,0,0,0,6.72,10.93,105.73,105.73,0,0,0,31.06-18.83C129.54,49.52,123.6,26.74,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.91,46,53.8,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.15,46,96,53,91,65.69,84.69,65.69Z"/>
+            </svg>
+            Join our Discord
+          </a>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#30363d] pb-4">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-slate-400" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M11.5 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm-6 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"></path><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75C0 1.784.784 1 1.75 1ZM1.5 2.75v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"></path>
+            </svg>
+            <h2 class="font-bold text-2xl text-white tracking-tight">Recent Repositories</h2>
+          </div>
+          
+          <p class="text-sm text-slate-400">
+            Displaying the last 3 items. 
+            <a class="text-blue-400 hover:text-blue-300 transition-colors font-medium ml-1 inline-flex items-center gap-0.5" href="/repositories">
+              View all indices &rarr;
+            </a>
+          </p>
+        </div>
+
+        <div class="bg-black/10 rounded-xl">
+          <RecentRepositories />
+        </div>
+      </section>
+
+    </main>
+  </div>
 </Layout>
