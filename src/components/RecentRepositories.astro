@@ -1,22 +1,49 @@
 ---
 import ArchiveCard from './ArchiveCard.astro';
-import archivedProjects from '../../public/recent-repositories.json';
+import repoData from '../../public/repositories.json';
+
+const archivedProjects = await Promise.all(
+  repoData.map(async (repo) => {
+    try {
+      const commitResponse = await fetch(`https://archival.orbitarchive.top/api/v1/repos/${repo.owner}/${repo.title}/commits?limit=1`);
+      const commits = await commitResponse.json();
+      const latestCommitHash = commits[0]?.sha || 'unknown';
+
+      const releaseResponse = await fetch(`https://archival.orbitarchive.top/api/v1/repos/${repo.owner}/${repo.title}/releases?limit=1`);
+      const releases = await releaseResponse.json();
+      const latestRelease = releases[0]?.tag_name || 'v1.0.0-legacy';
+
+      return {
+        ...repo,
+        commitHash: latestCommitHash,
+        releaseVersion: latestRelease
+      };
+    } catch (error) {
+      console.error(`Failed to fetch live Forgejo metadata for ${repo.title}:`, error);
+      return {
+        ...repo,
+        commitHash: 'unknown',
+        releaseVersion: 'v1.0.0-legacy'
+      };
+    }
+  })
+);
 ---
 
 <div class="w-full">
   <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full items-stretch">
-    {archivedProjects.map((repo) => (
-      <ArchiveCard 
-        title={repo.title}
-        description={repo.description}
-        originalLanguage={repo.originalLanguage}
-        commitHash={repo.commitHash}
-        releaseVersion={repo.releaseVersion}
-        forgejoUrl={repo.forgejoUrl}
-        liveDemoUrl={repo.liveDemoUrl || undefined}  
-        status={repo.status as 'archiving' | 'revived' | 'archived'} 
-        stars={repo.stars}
-      />
-    ))}
+      {archivedProjects.map((repo) => (
+        <ArchiveCard 
+          title={repo.title}
+          description={repo.description}
+          originalLanguage={repo.originalLanguage}
+          commitHash={repo.commitHash}
+          releaseVersion={repo.releaseVersion}
+          forgejoUrl={repo.forgejoUrl}
+          liveDemoUrl={repo.liveDemoUrl || undefined}  
+          status={repo.status as 'archiving' | 'revived' | 'archived'} 
+          stars={repo.stars}
+        />
+      ))}
   </section>
 </div>
