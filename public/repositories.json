@@ -1,12 +1,12 @@
 [
     {
-        "title": "Oldcord",
-        "description": "An open-source reimplementation of the old (2015-2018) Discord backend, including an on-demand client patcher.",
+        "title": "vnc-resolver-mastodon",
+        "description": "Bot that posts a random VNC Resolver entry to Mastodon. ",
         "originalLanguage": "JavaScript",
-        "owner": "oldcordapp",
-        "forgejoUrl": "https://archival.orbitarchive.top/oldcordapp/Oldcord",
-        "liveDemoUrl": "https://oldcord.orbitarchive.top",
-        "status": "archiving",
+        "owner": "akidinatophat",
+        "forgejoUrl": "https://archival.orbitarchive.top/akidinatophat/vnc-resolver-mastodon",
+        "liveDemoUrl": "",
+        "status": "archived",
         "stars": 0
     }
 ]
